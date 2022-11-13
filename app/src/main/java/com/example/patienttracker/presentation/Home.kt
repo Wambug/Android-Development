@@ -1,5 +1,6 @@
 package com.example.patienttracker.presentation
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,7 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -22,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.patienttracker.R
 import com.example.patienttracker.ui.theme.PatientTrackerTheme
 import org.xml.sax.ContentHandler
 
@@ -59,7 +63,7 @@ class Home {
             mutableStateOf(0)
         }
         LazyRow(modifier = Modifier.padding(8.dp),
-            horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
+            horizontalArrangement = Arrangement.spacedBy(22.dp, Alignment.CenterHorizontally),
         ) {
             items(dept.size) {
                 Column (
@@ -68,21 +72,52 @@ class Home {
                     Box(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier
-                            .width(80.dp)
-                            .height(80.dp)
+                            .width(60.dp)
+                            .height(60.dp)
                             .padding(5.dp)
                             .clickable {
                                 selected = it
                             }
+                            .shadow(ambientColor = Color.White, elevation = 5.dp)
                             .clip(RoundedCornerShape(10.dp))
                             .background(
-                                if (selected == it) Color(0xFF75E6DA)
-                                else Color(0xFFD4F1F4)
-                            )
+                                Color(0xFF0C2D48)
+
+                            ),
                     ) {
-                        //Text(text = dept[it], color = Color.Black)
+                        when {
+                            dept[it] == "Departments" -> {
+                                Image(painter = painterResource(id = R.drawable.department),
+                                    contentDescription ="Department",
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
+                            dept[it] == "Appointments" -> {
+                                Image(painter = painterResource(id = R.drawable.medical),
+                                    contentDescription ="Appointment",
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
+                            dept[it] == "Records" -> {
+                                Image(painter = painterResource(id = R.drawable.patient),
+                                    contentDescription ="records",
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
+                            dept[it] == "More" -> {
+                                Image(painter = painterResource(id = R.drawable.application),
+                                    contentDescription ="See more",
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
+                        }
                     }
                     Text(text = dept[it],color = Color.White)
+
                 }
             }
         }

@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, widthDp = 390, heightDp = 800)
 @Composable
 fun DefaultPreview() {
     PatientTrackerTheme {
