@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.patienttracker.presentation.Home
+import com.example.patienttracker.ui.home.Home
 import com.example.patienttracker.ui.theme.PatientTrackerTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +23,9 @@ class MainActivity : ComponentActivity() {
         setContent {
              // A surface container using the 'background' color from the theme
                   PatientTrackerTheme() {
-                      Box(modifier = Modifier.fillMaxSize().background(color = Color(0xFF0C2D48)))
+                      Box(modifier = Modifier
+                          .fillMaxSize()
+                          .background(color = Color(0xFF0C2D48)))
                       {
                           Home().Homepage()
                       }

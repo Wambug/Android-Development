@@ -1,4 +1,4 @@
-package com.example.patienttracker.presentation
+package com.example.patienttracker.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -36,6 +36,8 @@ class Home {
             Text(text = "Hello User,",Modifier.padding(15.dp, top = 10.dp), color = Color.White)
             AppointmentCard()
             DepartmentCard(dept = listOf("Departments","Appointments","Records","More"))
+            Divider()
+            ListViewCard()
         }
     }
     // UI card for showing upcoming appointments
@@ -126,8 +128,11 @@ class Home {
     // UI card for lists
     @Composable
     fun ListViewCard() {
-        Column {
-            Text("Trial")
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Column {
+                Text("Testing")
+                Text("Bruh")
+            }
         }
     }
 
@@ -136,10 +141,9 @@ class Home {
 
     @Preview(showBackground = true)
     @Composable
-fun DefaultPreview() {
+    fun DefaultPreview() {
         PatientTrackerTheme {
-          Homepage()
+            Homepage()
         }
     }
 }
-
